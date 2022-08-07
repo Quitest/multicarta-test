@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<payment>
+  <name>John</name>
+  <lastname>Smith</lastname>
+  <age>10</age>
+  <item>телек</item>
+  <count>3</count>
+  <amount>147.5</amount>
+  <purchaseDate>2008-09-29</purchaseDate>
+</payment>
