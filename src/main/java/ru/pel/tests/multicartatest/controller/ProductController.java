@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.xml.sax.SAXException;
+import ru.pel.tests.multicartatest.entity.Payment;
 import ru.pel.tests.multicartatest.entity.Product;
 import ru.pel.tests.multicartatest.service.ProductService;
 import ru.pel.tests.multicartatest.validator.XmlValidatorAgainstXsd;
@@ -26,6 +27,11 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getById(@PathVariable long id){
+        return ResponseEntity.ok(productService.getById(id));
     }
 
     @PostMapping

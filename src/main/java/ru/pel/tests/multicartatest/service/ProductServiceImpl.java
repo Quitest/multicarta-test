@@ -18,6 +18,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product getById(long id) {
+        return repository.findById(id).orElseThrow();
+    }
+
+    @Override
     public Product saveProduct(Product product) {
         return repository.save(product);
     }
