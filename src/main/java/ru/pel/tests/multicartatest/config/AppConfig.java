@@ -3,8 +3,6 @@ package ru.pel.tests.multicartatest.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;

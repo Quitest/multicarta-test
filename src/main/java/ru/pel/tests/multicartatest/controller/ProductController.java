@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> doPayment(@RequestBody Product product /*HttpServletRequest request*/) { //FIXME заменить Product -> ProductDto
+    public ResponseEntity<Product> addProduct(@RequestBody Product product /*HttpServletRequest request*/) { //FIXME заменить Product -> ProductDto
         Product savedProduct = productService.saveProduct(product);
         return ResponseEntity
                 .status(HttpStatus.CREATED)

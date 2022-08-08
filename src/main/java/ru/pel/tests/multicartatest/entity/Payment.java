@@ -16,7 +16,7 @@ public class Payment {
     private int age;
 
     @ManyToOne
-    @JsonManagedReference
+//    @JsonManagedReference
     private Product purchaseItem;// - Содержимое покупки (ссылка на Покупку)
     private int count;// - Количество товара (например, 3)
     private double amount;// - Сумма покупки (например, 147.50) //FIXME для денег использовать BigDecimal
