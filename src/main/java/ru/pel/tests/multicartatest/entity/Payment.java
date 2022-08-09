@@ -1,5 +1,6 @@
 package ru.pel.tests.multicartatest.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Payment {
     private Product purchaseItem;// - Содержимое покупки (ссылка на Покупку)
     private int count;// - Количество товара (например, 3)
     private double amount;// - Сумма покупки (например, 147.50) //FIXME для денег использовать BigDecimal
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate purchaseDate;// - Дата покупки (например, 02.05.2019)
 
     public Payment() {
