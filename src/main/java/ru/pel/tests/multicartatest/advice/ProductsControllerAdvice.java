@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.xml.sax.SAXException;
 
 @ControllerAdvice
-public class GoodsControllerAdvice {
+public class ProductsControllerAdvice {
 
     @ExceptionHandler(SAXException.class)
     public ResponseEntity<String> incorrectXmlRequest(SAXException e) {
@@ -16,5 +16,11 @@ public class GoodsControllerAdvice {
                 .body(e.getLocalizedMessage());
     }
 
+    @ExceptionHandler(NoSuchProductException.class)
+    public ResponseEntity<String> noSuchProduct(NoSuchProductException e) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(e.getLocalizedMessage());
+    }
 
 }

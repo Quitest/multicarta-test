@@ -1,6 +1,6 @@
 package ru.pel.tests.multicartatest.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,8 +15,10 @@ public class Payment {
     private String lastname;
     private int age;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE}/*,fetch = FetchType.EAGER*/)
+//    @JoinColumn(name = "purchase_item_id")
 //    @JsonManagedReference
+    @JsonProperty("item")
     private Product purchaseItem;// - Содержимое покупки (ссылка на Покупку)
     private int count;// - Количество товара (например, 3)
     private double amount;// - Сумма покупки (например, 147.50) //FIXME для денег использовать BigDecimal
@@ -63,7 +65,7 @@ public class Payment {
         return this;
     }
 
-
+    //    @JsonGetter("item")
     public Product getPurchaseItem() {
         return purchaseItem;
     }

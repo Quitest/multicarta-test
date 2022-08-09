@@ -31,6 +31,10 @@ public class Product {
         this.payments = payments;
     }
 
+    public void addPayment(Payment payment) {
+        payments.add(payment);
+    }
+
     public long getId() {
         return id;
     }
@@ -48,6 +52,4 @@ public class Product {
         this.name = name;
         return this;
     }
-
-
 }
