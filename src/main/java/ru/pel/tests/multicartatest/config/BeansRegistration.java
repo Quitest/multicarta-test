@@ -13,7 +13,7 @@ public class BeansRegistration {
         FilterRegistrationBean<PaymentFilter> filterRegistrationBean = new FilterRegistrationBean<>();
 
         filterRegistrationBean.setFilter(new PaymentFilter());
-        filterRegistrationBean.addUrlPatterns("/products");
+        filterRegistrationBean.addUrlPatterns("/payments");
         filterRegistrationBean.setOrder(1);
 
         return filterRegistrationBean;

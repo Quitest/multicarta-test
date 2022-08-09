@@ -22,10 +22,8 @@ CREATE TABLE payments (
    age INTEGER NOT NULL,
    purchase_item_id BIGINT REFERENCES products (id),
    count INTEGER NOT NULL,
---   amount DECIMAL,
-   amount MONEY,
+--  Для amount необходимо использовать денежный тип данных money - потребует преобразований типов в коде.
+   amount REAL,
    purchase_date date,
    CONSTRAINT pk_payments PRIMARY KEY (id)
 );
-
---ALTER TABLE payments ADD CONSTRAINT FK_PAYMENTS_ON_PURCHASEITEM FOREIGN KEY (purchase_item_id) REFERENCES goods (id);

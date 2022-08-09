@@ -10,26 +10,20 @@ import javax.xml.transform.stax.StAXSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
-//@Service
 public class XmlValidatorAgainstXsd {
-    public boolean validate(BufferedReader input, File xsd) throws SAXException, IOException, XMLStreamException {
-        StAXSource source;
-        FileInputStream inputStream;
-//        boolean isInputValid;
+    public boolean validate(InputStream input, File xsd) throws SAXException, IOException, XMLStreamException {
+        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = schemaFactory.newSchema(xsd);
+        Validator validator = schema.newValidator();
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
 
-            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = schemaFactory.newSchema(xsd);
-            Validator validator = schema.newValidator();
-            XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
-//            inputStream = new FileInputStream(input);
-//            XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(inputStream);
-
-            XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(input);
-            source = new StAXSource(xmlStreamReader);
-            validator.validate(source);
-//            isInputValid=true;
+        XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(input);
+        StAXSource source = new StAXSource(xmlStreamReader);
+        validator.validate(source);
         return true;
     }
 }
