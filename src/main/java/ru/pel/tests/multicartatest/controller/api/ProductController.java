@@ -1,23 +1,16 @@
-package ru.pel.tests.multicartatest.controller;
+package ru.pel.tests.multicartatest.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
-import org.xml.sax.SAXException;
-import ru.pel.tests.multicartatest.entity.Payment;
 import ru.pel.tests.multicartatest.entity.Product;
 import ru.pel.tests.multicartatest.service.ProductService;
-import ru.pel.tests.multicartatest.validator.XmlValidatorAgainstXsd;
 
-import javax.xml.stream.XMLStreamException;
-import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -30,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getById(@PathVariable long id){
+    public ResponseEntity<Product> getById(@PathVariable long id) {
         return ResponseEntity.ok(productService.getById(id));
     }
 

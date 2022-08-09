@@ -1,4 +1,4 @@
-package ru.pel.tests.multicartatest.controller;
+package ru.pel.tests.multicartatest.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import ru.pel.tests.multicartatest.service.PaymentService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/payments")
+@RequestMapping("/api/payments")
 public class PaymentController {
     @Autowired
     private PaymentService service;
