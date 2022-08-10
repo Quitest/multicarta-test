@@ -1,4 +1,4 @@
-package ru.pel.tests.multicartatest.advice;
+package ru.pel.tests.multicartatest.exception;
 
 import java.util.NoSuchElementException;
 

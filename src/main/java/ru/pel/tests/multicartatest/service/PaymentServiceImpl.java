@@ -2,7 +2,7 @@ package ru.pel.tests.multicartatest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.pel.tests.multicartatest.advice.NoSuchProductException;
+import ru.pel.tests.multicartatest.exception.NoSuchProductException;
 import ru.pel.tests.multicartatest.entity.Payment;
 import ru.pel.tests.multicartatest.entity.Product;
 import ru.pel.tests.multicartatest.repository.PaymentsRepository;
