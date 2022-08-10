@@ -1,8 +1,9 @@
 package ru.pel.tests.multicartatest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import ru.pel.tests.multicartatest.entity.Payment;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.pel.tests.multicartatest.service.SalesReport;
 
 import java.util.List;
@@ -19,8 +20,8 @@ public class ReportController {
      * @return
      */
     @GetMapping("/sales/inLastWeeks")
-    public List<Payment> lastSales(@RequestParam("weeks") int weeks) {
-//        return salesReport.generate(weeks);
+    public List<String> lastSales() {
+        return salesReport.getPaymentsInLastWeek();
     }
 
     /**
@@ -29,7 +30,7 @@ public class ReportController {
      * @return
      */
     @GetMapping("/sales/bestseller")
-    public Payment mostPurchased() {
+    public String mostPurchased() {
         return salesReport.findBestseller();
     }
 
@@ -53,11 +54,4 @@ public class ReportController {
 ////        return salesReport.byAge(18);
 //        return salesReport.favorite18yo();
 //    }
-
-//    @GetMapping("/sales/byAge")
-//    public List<Payment> byAge(@RequestParam("age") int age){
-//        return salesReport.byAge(/*age*/);
-//    }
-
-
 }
