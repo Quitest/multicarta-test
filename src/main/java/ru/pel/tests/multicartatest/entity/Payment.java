@@ -15,17 +15,14 @@ public class Payment {
     private String name;
     private String lastname;
     private int age;
-
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE}/*,fetch = FetchType.EAGER*/)
-//    @JoinColumn(name = "purchase_item_id")
-//    @JsonManagedReference
+
     @JsonProperty("item")
     private Product purchaseItem;// - Содержимое покупки (ссылка на Покупку)
     private int count;// - Количество товара (например, 3)
     private double amount;// - Сумма покупки (например, 147.50) //FIXME для денег использовать BigDecimal
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate purchaseDate;// - Дата покупки (например, 02.05.2019)
-
     public Payment() {
         //явное определение конструктора, чтобы его случайно не потерять при определении конструкторов с параметрами
     }
