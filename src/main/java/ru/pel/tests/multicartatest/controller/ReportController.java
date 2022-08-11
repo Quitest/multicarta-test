@@ -39,10 +39,12 @@ public class ReportController {
      *
      * @return
      */
-//    @GetMapping("/bestbuyer")
-//    public SalesReport.Person theBestBuyer() {
-//        return salesReport.bestBuyer();
-//    }
+    @GetMapping("/bestbuyer")
+    public List<String> theBestBuyer() {
+//        salesReport.getBestBuyer();
+//        return "заглушка";
+        return salesReport.getBestBuyer();
+    }
 
     /**
      * Что чаще всего покупают люди в возрасте 18 лет
@@ -50,8 +52,7 @@ public class ReportController {
      * @return
      */
 //    @GetMapping("/sales/byAge")
-//    public Payment favoritesOf18yo() {
-////        return salesReport.byAge(18);
+//    public String favoritesOf18yo() {
 //        return salesReport.favorite18yo();
 //    }
 }

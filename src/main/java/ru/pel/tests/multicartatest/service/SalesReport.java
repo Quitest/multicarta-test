@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,5 +35,27 @@ public class SalesReport {
                 "   payments.purchase_date >= date_trunc('day', current_date - interval '7' day) " +
                 "ORDER BY products.name").getResultList();
     }
+
+    public List<String> getBestBuyer() {
+        List<Object[]> queryResults = entityManager.createNativeQuery("SELECT p.name, p.lastname " + /*, sum(p.count) " +*/
+                "FROM payments p " +
+                "WHERE purchase_date >= date_trunc('month', current_date - interval '6' MONTH) " +
+                "GROUP BY p." +
+                "name ,p.lastname " +
+                "HAVING sum(p.count) >= ALL ( " +
+                "   SELECT sum(p2.count) FROM payments p2 " +
+                "   WHERE p2.purchase_date >= date_trunc('month', current_date - interval '6' MONTH) " +
+                "   GROUP BY p2.name ,p2.lastname " +
+                ")").getResultList();
+        List<String> bestBuyers = new ArrayList<>();
+        for (Object[] row : queryResults){
+            bestBuyers.add(row[0] + " "+ row[1]);
+        }
+        return bestBuyers;
+    }
+
+//    public String favorite18yo(){
+//
+//    }
 }
 
