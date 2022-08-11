@@ -41,8 +41,6 @@ public class ReportController {
      */
     @GetMapping("/bestbuyer")
     public List<String> theBestBuyer() {
-//        salesReport.getBestBuyer();
-//        return "заглушка";
         return salesReport.getBestBuyer();
     }
 
@@ -51,8 +49,8 @@ public class ReportController {
      *
      * @return
      */
-//    @GetMapping("/sales/byAge")
-//    public String favoritesOf18yo() {
-//        return salesReport.favorite18yo();
-//    }
+    @GetMapping("/sales/byAge")
+    public List<String> favoritesOf18yo() {
+        return salesReport.favorite18yo();
+    }
 }

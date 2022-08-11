@@ -40,8 +40,7 @@ public class SalesReport {
         List<Object[]> queryResults = entityManager.createNativeQuery("SELECT p.name, p.lastname " + /*, sum(p.count) " +*/
                 "FROM payments p " +
                 "WHERE purchase_date >= date_trunc('month', current_date - interval '6' MONTH) " +
-                "GROUP BY p." +
-                "name ,p.lastname " +
+                "GROUP BY p.name ,p.lastname " +
                 "HAVING sum(p.count) >= ALL ( " +
                 "   SELECT sum(p2.count) FROM payments p2 " +
                 "   WHERE p2.purchase_date >= date_trunc('month', current_date - interval '6' MONTH) " +
@@ -54,8 +53,17 @@ public class SalesReport {
         return bestBuyers;
     }
 
-//    public String favorite18yo(){
-//
-//    }
+    public List<String> favorite18yo(){
+              return   entityManager.createNativeQuery("SELECT p2.name " +
+                "FROM payments p " +
+                "JOIN products p2 ON p.purchase_item_id = p2.id " +
+                "WHERE p.age = 18 " +
+                "GROUP BY p2.name " +
+                "HAVING sum(p.count)>=ALL ( " +
+                "SELECT sum(p3.count) FROM payments p3 " +
+                "WHERE p3.age = 18 " +
+                "GROUP BY p3.purchase_item_id " +
+                ")").getResultList();
+    }
 }
 
