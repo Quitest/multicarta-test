@@ -15,12 +15,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="payment : ${paymentsList}" > <!--th:object="${payment}"-->
+        <tr th:each="payment : ${paymentsList}"> <!--th:object="${payment}"-->
             <td th:text="*{payment}"></td>
         </tr>
         </tbody>
     </table>
-
 </div>
 
 <!--<footer th:replace="~{fragments/footer :: footer}"></footer>-->

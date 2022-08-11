@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Фаворит 18-ти летних</title>
+</head>
+<body>
+<header class="container">
+    <div th:replace="~{fragments/header::header}"> Шапка страницы</div>
+</header>
+
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Наименование</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${favorites}"> <!--th:object="${payment}"-->
+            <td th:text="*{product}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

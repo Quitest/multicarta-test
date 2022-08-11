@@ -7,16 +7,22 @@
 <body>
 <div th:fragment="menu-panel">
     <nav>
-        <a href="http://localhost:8080/reports">Главная</a>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
+        <a href="/">Главная</a>
+<!--        <form th:action="@{/logout}" method="post">-->
+<!--            <input type="submit" value="Sign Out"/>-->
+<!--        </form>-->
         <form th:action="@{/reports/sales/inLastWeeks}" method="get">
             <input type="submit" value="Список покупок за последнюю неделю"/>
         </form>
-<!--        <form action="#" th:action="@{/usbdevices}" th:object="${serial}" method="get">-->
-<!--            <input type="text" th:field="*{serialNum}">-->
-<!--        </form>-->
+        <form th:action="@{/reports/sales/bestseller}" method="get">
+            <input type="submit" value="Бестселлер месяца">
+        </form>
+        <form th:action="@{/reports/sales/bestbuyer}" method="get">
+            <input type="submit" value="Постоянный покупатель за последние полгода">
+        </form>
+        <form th:action="@{/reports/sales/byAge}" method="get">
+            <input type="submit" value="Фаворит 18-ти летних">
+        </form>
     </nav>
 </div>
 </body>

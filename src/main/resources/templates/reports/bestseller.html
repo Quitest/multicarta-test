@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Бестселлер месяца</title>
+</head>
+<body>
+<header class="container">
+    <div th:replace="~{fragments/header::header}"> Шапка страницы</div>
+</header>
+
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Наименование</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${bestsellerList}" >
+            <td th:text="*{product}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
