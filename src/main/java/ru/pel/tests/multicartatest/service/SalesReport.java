@@ -14,7 +14,7 @@ public class SalesReport {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<String> findBestseller() {
+    public List<String> getBestseller() {
         return entityManager.createNativeQuery(
                 "SELECT prod.name " +
                         "FROM payments p " +
@@ -55,7 +55,7 @@ public class SalesReport {
         return bestBuyers;
     }
 
-    public List<String> favorite18yo(){
+    public List<String> getFavorite18yo(){
               return   entityManager.createNativeQuery("SELECT p2.name " +
                 "FROM payments p " +
                 "JOIN products p2 ON p.purchase_item_id = p2.id " +
