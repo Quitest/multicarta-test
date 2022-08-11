@@ -14,16 +14,18 @@ public class SalesReport {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public String findBestseller() {
-        return (String) entityManager.createNativeQuery(
-                "SELECT products.name " +
-                        "FROM payments " +
-                        "   RIGHT JOIN products ON payments.purchase_item_id=products.id " +
-                        "WHERE count IS NOT null " +
-                        "   AND payments.purchase_date >= date_trunc('month', current_date - interval '1' month) " +
-                        "GROUP BY products.name " +
-                        "ORDER BY sum(count) desc " +
-                        "LIMIT 1").getSingleResult();
+    public List<String> findBestseller() {
+        return entityManager.createNativeQuery(
+                "SELECT prod.name " +
+                        "FROM payments p " +
+                        "RIGHT JOIN products prod ON p.purchase_item_id = prod.id " +
+                        "WHERE p.purchase_date >= date_trunc('day', current_date - interval '30' day) " +
+                        "GROUP BY prod.name " +
+                        "HAVING sum(p.count)>= ALL( " +
+                        "SELECT sum(p2.count)/*, p2.purchase_item_id*/ FROM payments p2 " +
+                        "WHERE p2.purchase_date >= date_trunc('day', current_date - interval '30' day) " +
+                        "GROUP BY  p2.purchase_item_id " +
+                        ")").getResultList();
 
     }
 

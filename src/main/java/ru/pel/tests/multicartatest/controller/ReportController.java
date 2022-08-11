@@ -30,7 +30,7 @@ public class ReportController {
      * @return
      */
     @GetMapping("/sales/bestseller")
-    public String mostPurchased() {
+    public List<String> mostPurchased() {
         return salesReport.findBestseller();
     }
 
