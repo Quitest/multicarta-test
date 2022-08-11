@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель навигации</title>
+</head>
+<body>
+<div th:fragment="menu-panel">
+    <nav>
+        <a href="http://localhost:8080/reports">Главная</a>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <form th:action="@{/reports/sales/inLastWeeks}" method="get">
+            <input type="submit" value="Список покупок за последнюю неделю"/>
+        </form>
+<!--        <form action="#" th:action="@{/usbdevices}" th:object="${serial}" method="get">-->
+<!--            <input type="text" th:field="*{serialNum}">-->
+<!--        </form>-->
+    </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:fragment="layout (title, content)">
+<head>
+    <meta charset="UTF-8">
+<!--    <title th:replace="${title}">Start page</title>-->
+    <title>Заголовок</title>
+    <link rel="stylesheet" href="/styles/main.css"/>
+</head>
+
+<body>
+<header class="container">
+<!--    <div class="container">-->
+        <div th:replace="~{fragments/header::header}"> Шапка страницы</div>
+<!--    </div>-->
+</header>
+
+<div class="container">
+    <div class="box">
+<!--        <div th:replace="fragments/menu-panel::menu-panel">левая панель</div>-->
+<!--        <div th:replace="fragments/devices/device-by-serial:: device-info">центральная часть</div>-->
+        <div> Добро пожаловать. Это стартовая страница. Для начала работы воспользуйтесь меню сверху.</div>
+    </div>
+</div>
+</body>
+</html>

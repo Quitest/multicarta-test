@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список всех устройств в БД</title>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Наименование</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="payment : ${paymentsList}" > <!--th:object="${payment}"-->
+            <td th:text="*{payment}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!--<footer th:replace="~{fragments/footer :: footer}"></footer>-->
+</body>
+</html>
