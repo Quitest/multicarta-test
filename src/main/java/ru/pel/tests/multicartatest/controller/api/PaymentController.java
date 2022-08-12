@@ -15,12 +15,12 @@ public class PaymentController {
     private PaymentService service;
 
     @GetMapping
-    public ResponseEntity<List<Payment>> getAllPayments(){
+    public ResponseEntity<List<Payment>> getAllPayments() {
         return ResponseEntity.ok(service.getAllPayments());
     }
 
     @PostMapping
-    public ResponseEntity<Payment> doPayment(@RequestBody Payment payment){
+    public ResponseEntity<Payment> doPayment(@RequestBody Payment payment) { //FIXME заменить entity на DTO
         return ResponseEntity.ok(service.savePayment(payment));
     }
 }
