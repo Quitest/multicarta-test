@@ -15,12 +15,15 @@
 ### Конечные точки REST-контролеров 
 1. Платежи (PaymentController):
 - GET /api/payments 
-- POST /api/payments - принимает запросы, удовлетворяющие XSD (payment.xsd)
+- POST /api/payments - принимает запросы, удовлетворяющие XSD (payment.xsd). Пример запроса - payment.xml
 2. Товары (ProductController):
 - GET /api/products - список всех товаров (продуктов)
 - GET /api/products/{id} - получить товар по его ID
 - POST /api/products - создать новый продукт
 
 ### Пользователи
+Имеется две встроенные учётные записи:  admin и user с паролями admin и user соответственно. User имеет права доступа только к Web, а admin как к web так и к REST API.
 
-Имеется два пользователя. Логины admin и user, с паролями admin и user соответственно. User имеет право работать только с web, а admin как с web так и с REST. 
+### База данных
+БД используется PostgreSQL, хостящеяся на Heroku. Данные для подключения указаны в Application.properties.
+
