@@ -14,8 +14,6 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private ProductService productService;
-//    @Autowired
-//    private XmlValidatorAgainstXsd xmlValidatorAgainstXsd;
 
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
@@ -33,13 +31,5 @@ public class ProductController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(savedProduct);
-
-//        boolean isValid = xmlValidatorAgainstXsd.validate(request.getReader(), new File("payment.xsd"));
-//        BufferedReader reader = request.getReader();
-//        String str=reader.readLine();
-//        while (str!=null){
-//            System.out.println(str);
-//        }
-//        return isValid;
     }
 }
