@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель навигации</title>
+</head>
+<body>
+<div th:fragment="menu-panel">
+    <nav>
+        <a href="/">Главная</a>
+        <a href="http://log:out@localhost:8080/">Выход</a>
+        <form th:action="@{/reports/sales/inLastWeeks}" method="get">
+            <input type="submit" value="Список покупок за последнюю неделю"/>
+        </form>
+        <form th:action="@{/reports/sales/bestseller}" method="get">
+            <input type="submit" value="Бестселлер месяца">
+        </form>
+        <form th:action="@{/reports/sales/bestbuyer}" method="get">
+            <input type="submit" value="Постоянный покупатель за последние полгода">
+        </form>
+        <form th:action="@{/reports/sales/byAge}" method="get">
+            <input type="submit" value="Фаворит 18-ти летних">
+        </form>
+    </nav>
+</div>
+</body>
+</html>
