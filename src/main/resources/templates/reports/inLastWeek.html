@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Список покупок за прошлую неделю</title>
-    <link type="text/css" rel="stylesheet" th:href="@{css/main.css}"/>
+<!--    <link type="text/css" rel="stylesheet" th:href="@{css/main.css}"/>-->
+    <link type="text/css" rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
@@ -16,13 +17,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="payment : ${paymentsList}"> <!--th:object="${payment}"-->
+        <tr th:each="payment : ${paymentsList}">
             <td th:text="*{payment}"></td>
         </tr>
         </tbody>
     </table>
 </div>
-
-<!--<footer th:replace="~{fragments/footer :: footer}"></footer>-->
 </body>
 </html>

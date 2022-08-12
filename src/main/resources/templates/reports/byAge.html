@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
->
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Фаворит 18-ти летних</title>
@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product : ${favorites}"> <!--th:object="${payment}"-->
+        <tr th:each="product : ${favorites}">
             <td th:text="*{product}"></td>
         </tr>
         </tbody>

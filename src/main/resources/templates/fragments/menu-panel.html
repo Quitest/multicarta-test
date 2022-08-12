@@ -8,9 +8,7 @@
 <div th:fragment="menu-panel">
     <nav>
         <a href="/">Главная</a>
-<!--        <form th:action="@{/logout}" method="post">-->
-<!--            <input type="submit" value="Sign Out"/>-->
-<!--        </form>-->
+        <a href="http://log:out@localhost:8080/">Выход</a>
         <form th:action="@{/reports/sales/inLastWeeks}" method="get">
             <input type="submit" value="Список покупок за последнюю неделю"/>
         </form>
