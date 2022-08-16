@@ -2,6 +2,7 @@ package ru.pel.tests.multicartatest.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class Payment {
     private int count;// - Количество товара (например, 3)
     private double amount;// - Сумма покупки (например, 147.50) //FIXME для денег использовать BigDecimal
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate purchaseDate;// - Дата покупки (например, 02.05.2019)
     public Payment() {
         //явное определение конструктора, чтобы его случайно не потерять при определении конструкторов с параметрами
