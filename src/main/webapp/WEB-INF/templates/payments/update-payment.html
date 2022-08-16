@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновление покупки</title>
+</head>
+<body>
+<div>
+    <form th:method="PUT" th:action="@{/payments}" th:object="${payment}">
+        <table border="1">
+
+            <tbody>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}" th:value="*{name}"></td>
+            <tr>
+                <td>Lastname:</td>
+                <td><input type="text" th:field="*{lastname}"></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input type="text" th:field="*{age}"></td>
+            </tr>
+            <tr>
+                <td>Product</td>
+                <td>
+                    <select id="id" th:field="*{purchaseItem}">
+                        <option value="0">Выберите продукт</option>
+                        <option th:each="product : ${productList}"
+                                th:value="${product.id}"
+                                th:text="${product.name}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Count</td>
+                <td><input type="text" th:field="*{count}"></td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td><input type="text" th:field="*{amount}"></td>
+            </tr>
+            <tr>
+                <td>Purchase date</td>
+                <td><input type="date" th:field="*{purchaseDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" th:name="updateId" th:value="*{id}" title="Обновить">Обновить</button>
+    </form>
+</div>
+</body>
+</html>

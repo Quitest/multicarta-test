@@ -2,9 +2,9 @@ package ru.pel.tests.multicartatest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.pel.tests.multicartatest.exception.NoSuchProductException;
 import ru.pel.tests.multicartatest.entity.Payment;
 import ru.pel.tests.multicartatest.entity.Product;
+import ru.pel.tests.multicartatest.exception.NoSuchProductException;
 import ru.pel.tests.multicartatest.repository.PaymentsRepository;
 import ru.pel.tests.multicartatest.repository.ProductsRepository;
 
@@ -36,7 +36,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void deleteById(long id) {
-        Payment payment = paymentsRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid payment Id: "+id));
+        Payment payment = paymentsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid payment Id: " + id));
         paymentsRepository.delete(payment);
+    }
+
+    @Override
+    public Payment getById(long id) {
+        return paymentsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid payment Id: " + id));
     }
 }

@@ -34,9 +34,26 @@ public class CRUDPaymentsController {
         return "payments/index";
     }
 
-    @PatchMapping
-    public String updatePayment() {
-        throw new UnsupportedOperationException("Пока что не реализовано");
+    @GetMapping("/update")
+    public String getOldPayment(Model model, @RequestParam("paymentIdForEdit") long id) {
+        model.addAttribute("payment", paymentService.getById(id));
+        model.addAttribute("productList", productService.getAllProducts());
+        return "payments/update-payment";
+    }
+
+    @PutMapping
+    public String updatePayment(@RequestParam("updateId") long id, Payment payment){
+        //TODO рассмотреть возможность использования ModelMapper'а для избавления от этой лапши, а также перейти на DTO в параметрах
+        Payment savedPayment = paymentService.getById(id);
+        savedPayment.setPurchaseItem(payment.getPurchaseItem());
+        savedPayment.setAge(payment.getAge());
+        savedPayment.setCount(payment.getCount());
+        savedPayment.setAmount(payment.getAmount());
+        savedPayment.setName(payment.getName());
+        savedPayment.setLastname(payment.getLastname());
+        savedPayment.setPurchaseDate(payment.getPurchaseDate());
+        paymentService.savePayment(savedPayment);
+        return "redirect:/payments";
     }
 
     @DeleteMapping

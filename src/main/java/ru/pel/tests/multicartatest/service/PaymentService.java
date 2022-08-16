@@ -11,4 +11,6 @@ public interface PaymentService {
     List<Payment> getAllPayments();
 
     void deleteById(long id);
+
+    Payment getById(long id);
 }
