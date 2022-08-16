@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://kit.fontawesome.com/79be85c73a.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID в БД</th>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Item</th>
+            <th>Count</th>
+            <th>Amount</th>
+            <th>Purchase date</th>
+            <th colspan="2">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="payment : ${paymentList}" th:object="${payment}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{lastname}"></td>
+            <td th:text="*{age}"></td>
+            <td th:text="*{purchaseItem}"></td>
+            <td th:text="*{count}"></td>
+            <td th:text="*{amount}"></td>
+            <td th:text="*{purchaseDate}"></td>
+            <td>
+                <form th:action="@{/payments/edit/{id}(id=*{id})}" th:method="GET">
+                    <button title="Изменить"><i class="fas fa-user-edit"></i></button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/payments}" th:method="DELETE">
+                    <button type="submit" th:name="paymentIdForDelete" th:value="*{id}" title="Удалить"><i
+                            class="fas fa-trash"></i></button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

@@ -33,4 +33,10 @@ public class PaymentServiceImpl implements PaymentService {
     public List<Payment> getAllPayments() {
         return paymentsRepository.findAll();
     }
+
+    @Override
+    public void deleteById(long id) {
+        Payment payment = paymentsRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid payment Id: "+id));
+        paymentsRepository.delete(payment);
+    }
 }

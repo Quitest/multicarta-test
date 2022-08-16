@@ -9,4 +9,6 @@ import java.util.List;
 public interface PaymentService {
     Payment savePayment(Payment payment);
     List<Payment> getAllPayments();
+
+    void deleteById(long id);
 }
