@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div><a th:href="@{/payments/create}">Новая покупка</a> </div>
+<div><a th:href="@{/payments/create}">Новая покупка</a></div>
 <div>
     <table border="1">
         <thead>
@@ -34,14 +34,17 @@
             <td th:text="*{amount}"></td>
             <td th:text="*{purchaseDate}"></td>
             <td>
-                <form th:action="@{/payments/edit/{id}(id=*{id})}" th:method="GET">
-                    <button title="Изменить"><i class="fas fa-user-edit"></i></button>
+                <form th:action="@{/payments/update}" th:method="GET">
+                    <button type="submit" th:name="paymentIdForEdit" th:value="*{id}" title="Изменить">
+                        <i class="fas fa-user-edit"></i>
+                    </button>
                 </form>
             </td>
             <td>
                 <form action="#" th:action="@{/payments}" th:method="DELETE">
-                    <button type="submit" th:name="paymentIdForDelete" th:value="*{id}" title="Удалить"><i
-                            class="fas fa-trash"></i></button>
+                    <button type="submit" th:name="paymentIdForDelete" th:value="*{id}" title="Удалить">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </form>
             </td>
         </tr>
