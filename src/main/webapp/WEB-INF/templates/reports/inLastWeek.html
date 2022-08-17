@@ -2,18 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/css/menu.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/main.css"/>
     <title>Список покупок за прошлую неделю</title>
-<!--    <link type="text/css" rel="stylesheet" th:href="@{css/main.css}"/>-->
     <link type="text/css" rel="stylesheet" href="/css/main.css"/>
 </head>
+
 <body>
 <header th:replace="~{fragments/header :: header}"></header>
 
 <div>
-    <table border="1">
+    <table class="styled-table">
         <thead>
         <tr>
-            <th>Наименование</th>
+            <th>Список покупок за последнюю неделю</th>
         </tr>
         </thead>
         <tbody>

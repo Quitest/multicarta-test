@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <script src="https://kit.fontawesome.com/79be85c73a.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/menu.css"/>
+    <script src="https://kit.fontawesome.com/79be85c73a.js" crossorigin="anonymous"></script>
     <title>Список платежей</title>
 </head>
 <body>
 
-<div><a th:href="@{/payments/create}">Новая покупка</a></div>
+<header><div th:replace="~{fragments/header::header}">Шапка станицы</div></header>
+
 <div>
-    <table border="1">
+    <form th:action="@{/payments/create}" th:method="GET">
+        <button type="submit" title="Создать покупку" style="height:25px">
+            <i class="fa-solid fa-circle-plus fa-lg">Новая покупка</i>
+        </button>
+    </form>
+</div>
+    <table class="styled-table">
         <thead>
         <tr>
             <th>ID</th>
@@ -36,14 +45,14 @@
             <td>
                 <form th:action="@{/payments/update}" th:method="GET">
                     <button type="submit" th:name="paymentIdForEdit" th:value="*{id}" title="Изменить">
-                        <i class="fas fa-user-edit"></i>
+                        <i class="fa-solid fa-pencil"></i>
                     </button>
                 </form>
             </td>
             <td>
                 <form action="#" th:action="@{/payments}" th:method="DELETE">
                     <button type="submit" th:name="paymentIdForDelete" th:value="*{id}" title="Удалить">
-                        <i class="fas fa-trash"></i>
+                        <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </form>
             </td>
@@ -51,6 +60,5 @@
         </tbody>
     </table>
 
-</div>
 </body>
 </html>

@@ -2,9 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/menu.css"/>
     <title>Обновление покупки</title>
 </head>
 <body>
+
+<header>
+    <div th:replace="~{fragments/header::header}">Шапка станицы</div>
+</header>
+
 <div>
     <form th:method="PUT" th:action="@{/payments}" th:object="${payment}">
         <table border="1">

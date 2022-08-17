@@ -2,26 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/css/menu.css"/>
     <title>Панель навигации</title>
 </head>
 <body>
 <div th:fragment="menu-panel">
     <nav>
-        <a href="/">Главная</a>
-<!--        <a href="http://log:out@localhost:8080/">Выход</a>-->
-        <a href="/payments"> Управление покупками</a>
-        <form th:action="@{/reports/sales/inLastWeeks}" method="get">
-            <input type="submit" value="Список покупок за последнюю неделю"/>
-        </form>
-        <form th:action="@{/reports/sales/bestseller}" method="get">
-            <input type="submit" value="Бестселлер месяца">
-        </form>
-        <form th:action="@{/reports/sales/bestbuyer}" method="get">
-            <input type="submit" value="Постоянный покупатель за последние полгода">
-        </form>
-        <form th:action="@{/reports/sales/byAge}" method="get">
-            <input type="submit" value="Фаворит 18-ти летних">
-        </form>
+        <ul class="topmenu">
+            <li><a href="/">Главная</a></li>
+            <li><a href="" class="submenu-link">Аналитика</a>
+                <ul class="submenu">
+                    <li><a th:href="@{/reports/sales/inLastWeeks}">Список покупок за последнюю неделю</a></li>
+                    <li><a th:href="@{/reports/sales/bestseller}">Бестселлер месяца</a></li>
+                    <li><a th:href="@{/reports/sales/bestbuyer}">Постоянный покупатель за последние полгода</a></li>
+                    <li><a th:href="@{/reports/sales/byAge}">Фаворит 18-ти летних</a></li>
+                </ul>
+            </li>
+            <li><a th:href="@{/payments}">Управление покупками</a></li>
+        </ul>
     </nav>
 </div>
 </body>
