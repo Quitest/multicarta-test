@@ -1,5 +1,6 @@
 package ru.pel.tests.multicartatest.controller.api;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import ru.pel.tests.multicartatest.service.ProductService;
 
 import java.util.List;
 
+@SecurityRequirement(name = "basicAuth")
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
