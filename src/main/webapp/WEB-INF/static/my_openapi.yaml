@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: Торговая Лавка API
+  description: |
+    Это один из вариантов выполнения тестового задания на вакансию Java Developer.
+  contact:
+    email: dvl8@bk.ru
+  version: 0.0.1-alpha
+externalDocs:
+  description: Источник задания
+  url: https://github.com/stephandamrin/review
+servers:
+  - url: http://localhost:8080/api/
+tags:
+  - name: payment
+    description: покупки (платежи)
+  - name: product
+    description: продукты
+paths:
+  /payments:
+    get:
+      tags:
+        - payment
+      summary: Список платежей
+      description: Получить список всех платежей
+      operationId: getPaymentsList
+      responses:
+        '200':
+          description: Запрос выполнен успешно
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PaymentList'
+        '403':
+          description: Недостаточно прав для этой операции
+    post:
+      tags:
+        - payment
+      summary: Совершить платеж
+      operationId: doPayment
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PaymentDto'
+      responses:
+        '201':
+          description: Покупка успешна (создание платежа прошло без ошибок)
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Payment'
+  /products:
+    get:
+      tags:
+        - product
+      summary: список продуктов
+      description: Получить список всех продуктов в магазине
+      operationId: getAllProducts
+      responses:
+        '200':
+          description: Запрос успешно выполнен
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+        '403':
+          description: Недостаточно прав для этой операции
+    post:
+      tags:
+        - product
+      summary: Добавить новый продукт
+      operationId: addProduct
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/PostProduct'
+      responses:
+        '201':
+          description: Продукт успешно добавлен
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '403':
+          description: Недостаточно прав для этой операции
+  /products/{id}:
+    get:
+      tags:
+        - product
+      summary: получить сведения о продукте с определенным ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID продукта, информацию по которому необходимо получить
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '403':
+          description: отсутствует авторизация
+        '404':
+          description: продукт с заданным ID не найден
+
+components:
+  schemas:
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        name:
+          type: string
+          example: "Иван"
+        lastname:
+          type: string
+          example: "Иванов"
+        age:
+          type: integer
+          example: 18
+        purchaseItem:
+          type: object
+          $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          example: 2
+        amount:
+          type: number
+          format: double
+          example: 52.3
+        purchaseDate:
+          type: string
+          format: date
+          example: "2022-07-30"
+    PaymentDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Иван"
+        lastname:
+          type: string
+          example: "Иванов"
+        age:
+          type: integer
+          example: 18
+        item:
+          $ref: '#/components/schemas/ProductDto'
+        count:
+          type: integer
+          example: 2
+        amount:
+          type: number
+          format: double
+          example: 52.3
+        purchaseDate:
+          type: string
+          format: date
+          example: "2022-07-30"
+    PaymentList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Payment'
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 3
+        name:
+          type: string
+          example: "Соковыжималка"
+    ProductDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Соковыжималка"
+    PostProduct:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Принтер"
+    ProductList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Product'
+  responses:
+    UnauthorizedError:
+      description: Логин/пароль неверные или отсутствуют
+      headers:
+        WWW_Authenticate:
+          schema:
+            type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+
+security:
+  - basicAuth: [ ]
