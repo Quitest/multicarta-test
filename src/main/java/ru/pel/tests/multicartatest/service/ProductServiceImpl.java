@@ -3,6 +3,7 @@ package ru.pel.tests.multicartatest.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.pel.tests.multicartatest.entity.Product;
+import ru.pel.tests.multicartatest.exception.NoSuchProductException;
 import ru.pel.tests.multicartatest.repository.ProductsRepository;
 
 import java.util.List;
@@ -19,7 +20,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getById(long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id).orElseThrow(() -> {
+            throw new NoSuchProductException("Product ID=" + id + " not found");
+        });
     }
 
     @Override
