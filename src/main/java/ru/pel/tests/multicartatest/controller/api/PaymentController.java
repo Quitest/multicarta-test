@@ -1,6 +1,7 @@
 package ru.pel.tests.multicartatest.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.pel.tests.multicartatest.entity.Payment;
@@ -23,6 +24,8 @@ public class PaymentController {
     public ResponseEntity<Payment> doPayment(
             @RequestBody
             Payment payment) { //FIXME заменить entity на DTO
-        return ResponseEntity.ok(service.savePayment(payment));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(service.savePayment(payment));
     }
 }
